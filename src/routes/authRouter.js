@@ -61,7 +61,7 @@ authRouter.post("/api/login", async (req, res) => {
       user,
     });
   } catch (error) {
-    res.status(401).json({
+    res.status(400).json({
       message: "Bad Request",
       error: error.message,
     });

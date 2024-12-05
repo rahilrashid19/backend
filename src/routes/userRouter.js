@@ -19,6 +19,21 @@ userRouter.get("/api/getAllUsers", authMiddleware, async (req, res) => {
   }
 });
 
+userRouter.get("/api/viewProfile", authMiddleware, async (req, res) => {
+  try {
+    const user = req.user;
+    res.status(200).json({
+      message: "User profile fetched successfully",
+      user,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "Bad request - No Users found",
+      error: error.message,
+    });
+  }
+});
+
 module.exports = {
   userRouter,
 };
