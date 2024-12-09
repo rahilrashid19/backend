@@ -12,6 +12,16 @@ const validateSignUpApi = (req) => {
     throw new Error("Please enter a secure password");
 };
 
+const validateUpadeFields = (req) => {
+  const updatebleFields = ["firstName", "lastName", "profilePic", "bio", "age"];
+
+  const isEditable = Object.keys(req.body).every((key) => {
+    return updatebleFields.includes(key);
+  });
+  return isEditable;
+};
+
 module.exports = {
   validateSignUpApi,
+  validateUpadeFields,
 };
